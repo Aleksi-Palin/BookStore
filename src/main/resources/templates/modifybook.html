@@ -24,6 +24,10 @@
             <label for="year">Year</label>
             <input type="text" id="year" th:field="*{publicationYear}" />
 
+            <label for="catlist">Category</label>
+            <select id="catlist" th:field="*{category.categoryid}" class="form-control">
+                <option th:each="cat: ${categories}" th:value="${cat.categoryid}" th:text="${cat.name}"></option>
+            </select>
 
             <input type="submit" class="btn btn-success" value="Save"></input>
 
