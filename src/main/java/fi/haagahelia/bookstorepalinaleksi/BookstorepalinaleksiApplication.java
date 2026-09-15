@@ -22,20 +22,22 @@ public class BookstorepalinaleksiApplication {
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository repository,CategoryRepository crepository) {
 		return (args) -> {
+			if (repository.count() == 0){
+				Category fiction = crepository.save(new Category("Fiction"));
+				Category nonFiction = crepository.save(new Category("Non-fiction"));
+				Category science = crepository.save(new Category("Science"));
+				Category history = crepository.save(new Category("History"));
 
-			Category fiction = crepository.save(new Category("Fiction"));
-			Category nonFiction = crepository.save(new Category("Non-fiction"));
-			Category science = crepository.save(new Category("Science"));
-			Category history = crepository.save(new Category("History"));
 
 
+				repository.save(new Book("A Farewell to Arms", "Ernest Hemingway", Year.of(1929), "1232323-21", 29.90,fiction));
+				repository.save(new Book("Animal Farm", "George Orwell", Year.of(1945), "2212343-5", 19.50,fiction));
 
-			repository.save(new Book("A Farewell to Arms", "Ernest Hemingway", Year.of(1929), "1232323-21", 29.90,fiction));
-			repository.save(new Book("Animal Farm", "George Orwell", Year.of(1945), "2212343-5", 19.50,fiction));
-
-			for (Book book : repository.findAll()) {
-				System.out.println(book);
+				for (Book book : repository.findAll()) {
+					System.out.println(book);
+				}
 			}
+			
 		};
 	}
 }
