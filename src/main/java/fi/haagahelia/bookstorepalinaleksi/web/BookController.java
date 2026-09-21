@@ -1,5 +1,7 @@
 package fi.haagahelia.bookstorepalinaleksi.web;
 
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +14,7 @@ import fi.haagahelia.bookstorepalinaleksi.domain.CategoryRepository;
 
 
 
-@Controller
+@Controller 
 public class BookController {
 
     private BookRepository repository;
@@ -29,6 +31,7 @@ public class BookController {
         model.addAttribute("books",repository.findAll());
         return "booklist.html";
     }
+
 
     @RequestMapping("/add")
     public String addBook(Model model){
