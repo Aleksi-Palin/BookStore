@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/css/home.css" th:href="@{/css/home.css}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark home-nav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" th:href="@{/}">BOOKSTORE<span class="brand-dot">.</span></a>
+            <a class="btn btn-sm btn-outline-light rounded-pill px-3" th:href="@{/booklist}">View collection</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <p class="eyebrow">YOUR NEXT GOOD READ</p>
+                        <h1>Stories worth<br><span>keeping close.</span></h1>
+                        <p class="hero-copy">A simple home for your book collection. Browse what you own, keep categories tidy, and add something new to the shelf.</p>
+                        <div class="d-flex gap-3 flex-wrap mt-4">
+                            <a class="btn btn-coral btn-lg rounded-pill px-4" th:href="@{/booklist}">Browse books</a>
+                            <a class="btn btn-outline-light btn-lg rounded-pill px-4" th:href="@{/add}">Add a book</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <div class="book-stack" aria-hidden="true">
+                            <div class="book book-one">FICTION</div>
+                            <div class="book book-two">HISTORY</div>
+                            <div class="book book-three">SCIENCE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container feature-strip">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-item"><span class="feature-number">01</span><h2>Browse</h2><p>See every title in your collection at a glance.</p></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item"><span class="feature-number">02</span><h2>Organize</h2><p>Keep authors, years, prices, and categories together.</p></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item"><span class="feature-number">03</span><h2>Discover</h2><p>Add the next book that belongs on your shelf.</p></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
