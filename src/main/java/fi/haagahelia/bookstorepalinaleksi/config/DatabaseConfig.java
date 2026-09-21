@@ -7,15 +7,12 @@ import java.nio.charset.StandardCharsets;
 import javax.sql.DataSource;
 
 import org.springframework.boot.jdbc.autoconfigure.DataSourceProperties;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DatabaseConfig {
-
     @Bean
-    @ConfigurationProperties("spring.datasource")
     public DataSource dataSource(DataSourceProperties properties) {
         String databaseUrl = System.getenv("DATABASE_URL");
         if (databaseUrl != null && !databaseUrl.isBlank()) {
