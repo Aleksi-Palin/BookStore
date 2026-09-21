@@ -5,34 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Book</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="/css/home.css" th:href="@{/css/home.css}">
 </head>
-<body>
-    <h1>Modify book</h1>
-    <div>
-        <form th:object="${book}" th:action="@{../save}" action="#" method="post">
+<body class="book-form-page">
+    <header class="booklist-header">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a class="login-brand mb-0" th:href="@{/}">BOOKSTORE<span class="brand-dot">.</span></a>
+            <a class="btn btn-outline-light" th:href="@{/booklist}">Back to books</a>
+        </div>
+    </header>
+
+    <main class="container book-form-content">
+        <div class="book-form-heading">
+            <p class="eyebrow">YOUR COLLECTION</p>
+            <h1>Edit <span>this book.</span></h1>
+        </div>
+        <form class="book-form" th:object="${book}" th:action="@{../save}" action="#" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <input type="hidden" th:field="*{id}" class="form-control"/>
 
-            <label for="author">Author</label>
-            <input type="text" id="author" th:field="*{author}" />
+            <div class="form-field">
+                <label for="author">Author</label>
+                <input type="text" id="author" th:field="*{author}" />
+            </div>
 
-            <label for="title">Title</label>
-            <input type="text" id="title" th:field="*{title}" />
+            <div class="form-field">
+                <label for="title">Title</label>
+                <input type="text" id="title" th:field="*{title}" />
+            </div>
 
-            <label for="isbn">ISBN</label>
-            <input type="text" id="isbn" th:field="*{isbn}" />
+            <div class="form-field">
+                <label for="isbn">ISBN</label>
+                <input type="text" id="isbn" th:field="*{isbn}" />
+            </div>
 
-            <label for="year">Year</label>
-            <input type="text" id="year" th:field="*{publicationYear}" />
+            <div class="form-field">
+                <label for="year">Year</label>
+                <input type="text" id="year" th:field="*{publicationYear}" />
+            </div>
 
-            <label for="catlist">Category</label>
-            <select id="catlist" th:field="*{category.categoryid}" class="form-control">
-                <option th:each="cat: ${categories}" th:value="${cat.categoryid}" th:text="${cat.name}"></option>
-            </select>
+            <div class="form-field">
+                <label for="catlist">Category</label>
+                <select id="catlist" th:field="*{category.categoryid}">
+                    <option th:each="cat: ${categories}" th:value="${cat.categoryid}" th:text="${cat.name}"></option>
+                </select>
+            </div>
 
-            <input type="submit" class="btn btn-success" value="Save"></input>
+            <button type="submit" class="btn btn-coral book-form-submit">Save changes</button>
 
         </form>
-    </div>
+    </main>
 </body>
 </html>

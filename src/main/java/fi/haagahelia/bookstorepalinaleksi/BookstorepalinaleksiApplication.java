@@ -1,16 +1,13 @@
 package fi.haagahelia.bookstorepalinaleksi;
 
-import java.time.Year;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import fi.haagahelia.bookstorepalinaleksi.domain.Book;
-import fi.haagahelia.bookstorepalinaleksi.domain.BookRepository;
-import fi.haagahelia.bookstorepalinaleksi.domain.Category;
-import fi.haagahelia.bookstorepalinaleksi.domain.CategoryRepository;
+
+import fi.haagahelia.bookstorepalinaleksi.domain.User;
+import fi.haagahelia.bookstorepalinaleksi.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstorepalinaleksiApplication {
@@ -20,23 +17,12 @@ public class BookstorepalinaleksiApplication {
 	}
 
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository,CategoryRepository crepository) {
+	public CommandLineRunner bookDemo(UserRepository urepository) {
 		return (args) -> {
-			if (repository.count() == 0){
-				Category fiction = crepository.save(new Category("Fiction"));
-				Category nonFiction = crepository.save(new Category("Non-fiction"));
-				Category science = crepository.save(new Category("Science"));
-				Category history = crepository.save(new Category("History"));
-
-
-
-				repository.save(new Book("A Farewell to Arms", "Ernest Hemingway", Year.of(1929), "1232323-21", 29.90,fiction));
-				repository.save(new Book("Animal Farm", "George Orwell", Year.of(1945), "2212343-5", 19.50,fiction));
-
-				for (Book book : repository.findAll()) {
-					System.out.println(book);
-				}
-			}
+			//User user1 = new User("user", "$2a$12$g5O9Xf8xbs7ElkGeyUVeJOaFT3BZYOyllxY9TQGV5ZtPZIgYLJaEu", "ROLE_USER");
+			//User user2 = new User("admin", "$2a$12$UpKvfmHyz4MLLmuVUKr5veGlZI5YgmADhMkJ4E4gBVEQk5vgLTFqi", "ROLE_ADMIN");
+			///urepository.save(user1);
+			//urepository.save(user2);
 			
 		};
 	}

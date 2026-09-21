@@ -3,6 +3,8 @@ package fi.haagahelia.bookstorepalinaleksi.web;
 
 import java.security.Principal;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,9 +45,10 @@ public class BookController {
     }
 
     @RequestMapping("/booklist")
-    public String booklist(Model model, Principal principal){
+    public String booklist(Model model, Principal principal, HttpSession session){
+        session.setAttribute("username", principal.getName());
         model.addAttribute("books",repository.findAll());
-        model.addAttribute("username", principal.getName());
+        model.addAttribute("username", session.getAttribute("username"));
         return "booklist.html";
     }
 

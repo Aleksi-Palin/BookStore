@@ -39,7 +39,7 @@
                         <th scope="col">ISBN</th>
                         <th scope="col">Year</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Actions</th>
+                        <th sec:authorize="hasRole('ADMIN')" scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,9 +49,9 @@
                         <td th:text="${book.isbn}"></td>
                         <td th:text="${book.publicationYear}"></td>
                         <td th:text="${book.category.name}"></td>
-                        <td class="book-actions">
-                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-sm btn-danger">Delete</a>
-                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-sm btn-primary">Edit</a>
+                        <td sec:authorize="hasRole('ADMIN')" class="book-actions">
+                            <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-sm btn-danger">Delete</a>
+                            <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-sm btn-primary">Edit</a>
                         </td>
                     </tr>
                 </tbody>
